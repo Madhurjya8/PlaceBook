@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from "react";
+import mapboxgl from "mapbox-gl";
 
 import "./Map.css";
 
@@ -8,18 +9,15 @@ const Map = (props) => {
   const { center, zoom } = props;
 
   useEffect(() => {
-    new window.ol.Map({
-      target: mapRef.current.id,
-      layers: [
-        new window.ol.layer.Tile({
-          source: new window.ol.source.OSM(),
-        }),
-      ],
-      view: new window.ol.View({
-        center: window.ol.proj.fromLonLat([center.lng, center.lat]),
-        zoom: zoom,
-      }),
+    mapboxgl.accessToken =
+      "pk.eyJ1IjoibWFkaHVyanlhIiwiYSI6ImNsMzkwbGc5bzA1OXYzYm82dXRyeGZidG8ifQ.ITqyJw40vPvfrnHWnmhcZw";
+    const map = new mapboxgl.Map({
+      container: mapRef.current,
+      style: "mapbox://styles/mapbox/streets-v11",
+      center: center,
+      zoom: zoom,
     });
+    new mapboxgl.Marker({ position: center, map: map });
   }, [center, zoom]);
 
   return (
