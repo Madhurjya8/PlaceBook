@@ -1,7 +1,9 @@
 import React, { useRef, useEffect } from "react";
 import mapboxgl from "mapbox-gl";
 
+import { API_KEY } from "../../../config";
 import "./Map.css";
+
 
 const Map = (props) => {
   const mapRef = useRef();
@@ -9,8 +11,7 @@ const Map = (props) => {
   const { center, zoom } = props;
 
   useEffect(() => {
-    mapboxgl.accessToken =
-      "pk.eyJ1IjoibWFkaHVyanlhIiwiYSI6ImNsMzkwbGc5bzA1OXYzYm82dXRyeGZidG8ifQ.ITqyJw40vPvfrnHWnmhcZw";
+    mapboxgl.accessToken = API_KEY;
     const map = new mapboxgl.Map({
       container: mapRef.current,
       style: "mapbox://styles/mapbox/streets-v11",
