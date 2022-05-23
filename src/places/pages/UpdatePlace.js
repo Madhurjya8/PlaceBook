@@ -45,6 +45,7 @@ const UpdatePlace = () => {
         );
 
         setLoadedPlace(responseData.place);
+
         setFormData(
           {
             title: {
@@ -80,6 +81,10 @@ const UpdatePlace = () => {
       );
       history.push("/" + authCtx.userId + "/places");
     } catch (err) {}
+  };
+
+  const placeUpdateCancelHandler = () => {
+    history.goBack();
   };
 
   if (isLoading) {
@@ -130,7 +135,7 @@ const UpdatePlace = () => {
           <Button type="submit" disabled={!formState.isValid}>
             UPDATE PLACE
           </Button>
-          <Button inverse onClick={history.goBack}>
+          <Button inverse onClick={placeUpdateCancelHandler}>
             CANCEL
           </Button>
         </form>
