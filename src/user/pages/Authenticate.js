@@ -85,8 +85,7 @@ const Authenticate = () => {
           }
         );
 
-        authCtx.login(responseData.user.id);
-        console.log(responseData.user.id);
+        authCtx.login(responseData.userId, responseData.token);
       } catch (err) {}
     } else {
       try {
@@ -102,7 +101,7 @@ const Authenticate = () => {
           formData
         );
 
-        authCtx.login(responseData.user.id);
+        authCtx.login(responseData.userId, responseData.token);
       } catch (err) {}
     }
   };
