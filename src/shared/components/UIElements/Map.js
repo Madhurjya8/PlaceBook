@@ -1,9 +1,9 @@
 import React, { useRef, useEffect } from "react";
 import mapboxgl from "mapbox-gl";
 
-import { API_KEY } from "../../../config";
 import "./Map.css";
 
+const API_KEY = process.env.REACT_APP_MAPBOX_API_KEY;
 
 const Map = (props) => {
   const mapRef = useRef();
